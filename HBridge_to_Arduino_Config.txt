@@ -1,0 +1,7 @@
+green - enA (Left) - 6
+yellow - in1 - 7
+blue - in2 - 8
+
+orange - in3 - 3
+purple - in4 - 4
+red - enB (right) - 5
