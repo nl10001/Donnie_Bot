@@ -45,7 +45,7 @@ class DonnieBot(object):
 			self.pub.publish(self.var)
 			self.rate.sleep()
 			
-	#stops the motors when the scrips is ended
+	#stops the motors when the script is ended
 	def shutdownhook(self):
 		print("ending...")
 		self.ctrl_c = True
