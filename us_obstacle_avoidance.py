@@ -28,6 +28,7 @@ class Donnie_Bot:
 		try:
 			while not self.ctrl_c:
 				#tells motors to turn depending if the ultrasonic senses an obstacle
+				#otherwise the Donnie Bot will drive straight
 				if self.sonar.data <= 20:
 					self.var.angular.z=1
 				else:
