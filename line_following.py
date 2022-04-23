@@ -15,7 +15,7 @@ class Line_Following:
 		self.irArray=Float32MultiArray()
 		self.ctrl_c = False
 		print("starting line following...")
-		self.rate = rospy.Rate(20) # 10hz
+		self.rate = rospy.Rate(20) # 20hz
         
 	#subscribing to the IR topic to get the IR data
 	def get_ir_values(self,data):
