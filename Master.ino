@@ -8,6 +8,7 @@
 
 #define TRIGPIN 11
 #define ECHOPIN 12
+#define TEMP_PIN A3
 
 #define IRL A0
 #define IRM A1
@@ -26,7 +27,7 @@ float wheelL=0;
 
 
 
-int sensePin=A0;
+
 int tempInput=0;
 
 float irArray[3]={0, 0, 0};
@@ -122,7 +123,7 @@ void setup() {
   nh.subscribe(motorSub);
   pinMode(TRIGPIN,OUTPUT);
   pinMode(ECHOPIN,INPUT);
-  pinMode(sensePin,INPUT);
+  pinMode(TEMP_PIN,INPUT);
   pinMode(IRL, INPUT);
   pinMode(IRM, INPUT);
   pinMode(IRR, INPUT);
@@ -159,18 +160,20 @@ void loop() {
     distance =duration*0.034/2;
     sonar_msg.data=distance;
     pub_sonar.publish(&sonar_msg);
+    
+    
+    float temp;
+    tempInput= analogRead(TEMP_PIN);
+    temp=(float)tempInput;
+    temp=(((temp*5)-0.5)*100);
+    //temp=(temp-32)/1.8;
+    temp_msg.data=temp;
+    pub_temp.publish(&temp_msg);
+
 
     publisher_timer=millis()+50;
   }
 
-
-  //float temp;
-  //tempInput= analogRead(sensePin);
-  //temp=(float)tempInput;
-  //temp=(((temp*5)-0.5)*100);
-  //temp=(temp-32)/1.8;
-  //temp_msg.data=temp;
-  //pub_temp.publish(&temp_msg);
 
   
   
