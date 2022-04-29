@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<robot name="donnie_bot">
+	
+	<gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/donnie_bot</robotNamespace>
+        </plugin>
+    </gazebo>
+
+	<material name="white">
+		<color rgba="0.8 0.8 0.8 1"/>
+	</material>
+	
+	<material name="yellow">
+		<color rgba="0.8 0.8 0 1"/>
+	</material>
+	
+	<material name="red">
+		<color rgba="1.0 0 0 1"/>
+	</material>
+	
+	
+	<link name="base_link">
+		
+		<!-- Octagonal base -->
+		
+		<!-- Placeholder inertia values, to be updated -->
+		<inertial>
+			<origin xyz="0 0 0.1"/>
+			<mass value="0.6"/>
+			<inertia ixx="0.001" ixy="0.0" ixz="0.0" iyy="0.001" iyz="0.0" izz="0.001"/>
+		</inertial>
+		
+		
+		<!-- visual -->
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.282 0.117 0.094"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0.785398163"/>
+			<geometry>
+				<box size="0.282 0.117 0.094"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 1.5707963"/>
+			<geometry>
+				<box size="0.282 0.117 0.094"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 2.35619449019"/>
+			<geometry>
+				<box size="0.282 0.117 0.094"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+		
+		
+		<!-- collisions -->
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.282 0.117 0.094"/>
+			</geometry>
+		</collision>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0.785398163"/>
+			<geometry>
+				<box size="0.282 0.117 0.094"/>
+			</geometry>
+		</collision>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 1.5707963"/>
+			<geometry>
+				<box size="0.282 0.117 0.094"/>
+			</geometry>
+		</collision>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 2.35619449019"/>
+			<geometry>
+				<box size="0.282 0.117 0.094"/>
+			</geometry>
+		</collision>
+		
+		<!-- Struts -->
+		
+		<!-- visual -->
+		
+		<visual>
+			<origin xyz="0.04 0.1 0.157" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.0125" length="0.22"/>
+			</geometry>
+		</visual>
+		
+		<visual>
+			<origin xyz="-0.04 0.1 0.157" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.0125" length="0.22"/>
+			</geometry>
+		</visual>
+		
+		<visual>
+			<origin xyz="0.04 -0.1 0.157" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.0125" length="0.22"/>
+			</geometry>
+		</visual>
+		
+		<visual>
+			<origin xyz="-0.04 -0.1 0.157" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.0125" length="0.22"/>
+			</geometry>
+		</visual>
+		
+		<!-- collision -->
+		<collision>
+			<origin xyz="0.04 0.1 0.157" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.0125" length="0.22"/>
+			</geometry>
+		</collision>
+		
+		<collision>
+			<origin xyz="-0.04 0.1 0.157" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.0125" length="0.22"/>
+			</geometry>
+		</collision>
+		
+		<collision>
+			<origin xyz="0.04 -0.1 0.157" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.0125" length="0.22"/>
+			</geometry>
+		</collision>
+		
+		<collision>
+			<origin xyz="-0.04 -0.1 0.157" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.0125" length="0.22"/>
+			</geometry>
+		</collision>
+		
+		<!-- LiDAR platform -->
+		
+		<visual>
+			<origin xyz="0 0 0.267" rpy="0 0 1.5707963"/>
+			<geometry>
+				<box size="0.282 0.117 0.008"/>
+			</geometry>
+			<material name="white"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0.267" rpy="0 0 1.5707963"/>
+			<geometry>
+				<box size="0.282 0.117 0.008"/>
+			</geometry>
+		</collision>
+		
+  	</link>	
+  
+	<link name="wheel_1">
+		
+		<!-- Placeholder inertia values, to be updated -->
+		<inertial>
+			<mass value="0.2"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.04" length="0.025"/>
+			</geometry>
+			<material name="yellow"/>
+		</visual>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.005" length="0.04"/>
+			</geometry>
+			<material name="yellow"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.04" length="0.025"/>
+			</geometry>
+		</collision>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.005" length="0.04"/>
+			</geometry>
+		</collision>
+		
+	</link>
+	
+	<link name="wheel_2">
+		
+		<!-- Placeholder inertia values, to be updated -->
+		<inertial>
+			<mass value="0.2"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.04" length="0.025"/>
+			</geometry>
+			<material name="yellow"/>
+		</visual>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.005" length="0.04"/>
+			</geometry>
+			<material name="yellow"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.04" length="0.025"/>
+			</geometry>
+		</collision>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.005" length="0.04"/>
+			</geometry>
+		</collision>
+		
+	</link>
+	
+	
+	<!-- wheel joints -->
+	<joint name="base_wheel1" type="continuous">
+		<origin xyz="0 0.153 -0.02" rpy="1.5707963 0 0"/>
+		<parent link="base_link"/>
+		<child link="wheel_1"/>
+		<axis xyz="0 0 -1"/>
+		<dynamics damping="0.0" friction="0.0"/>
+	</joint>
+
+	<transmission name="wheel1_tran">
+    	<type>transmission_interface/SimpleTransmission</type>
+    	<joint name="base_wheel1">
+        	<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    	</joint>
+		<actuator name="wheel1_motor">
+			<hardwareInterface>VelocityJointInterface</hardwareInterface>
+			<mechanicalReduction>7</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+	
+	<joint name="base_wheel2" type="continuous">
+		<origin xyz="0 -0.153 -0.02" rpy="1.5707963 0 0"/>
+		<parent link="base_link"/>
+		<child link="wheel_2"/>
+		<axis xyz="0 0 -1"/>
+		<dynamics damping="0.0" friction="0.0"/>
+	</joint>
+	
+	<transmission name="wheel2_tran">
+    	<type>transmission_interface/SimpleTransmission</type>
+    	<joint name="base_wheel2">
+        	<hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+    	</joint>
+		<actuator name="wheel2_motor">
+			<hardwareInterface>VelocityJointInterface</hardwareInterface>
+			<mechanicalReduction>7</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+	
+	<!-- Castors -->
+	
+	<link name="castor_1">
+		<inertial>
+			<mass value="0.2"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		
+	
+	</link>
+	
+	<joint name="base_castor1" type="fixed">
+		<origin xyz="0.08 -0.075 -0.05" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="castor_1"/>
+	</joint>
+	
+	
+	<link name="castor_2">
+		<inertial>
+			<mass value="0.2"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		
+	
+	</link>
+	
+	<joint name="base_castor2" type="fixed">
+		<origin xyz="-0.08 -0.075 -0.05" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="castor_2"/>
+	</joint>
+	
+	
+	<link name="castor_3">
+		<inertial>
+			<mass value="0.2"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		
+	
+	</link>
+	
+	<joint name="base_castor3" type="fixed">
+		<origin xyz="0.08 0.075 -0.05" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="castor_3"/>
+	</joint>
+	
+	
+	<link name="castor_4">
+		<inertial>
+			<mass value="0.2"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<sphere radius="0.01"/>
+			</geometry>
+		</collision>
+		
+	
+	</link>
+	
+	<joint name="base_castor4" type="fixed">
+		<origin xyz="-0.08 0.075 -0.05" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="castor_4"/>
+	</joint>
+	
+	
+	
+	
+	<link name="camera_link">
+		
+		<!-- inertia element is required on each link for gazebo to accept it -->
+		<inertial>
+			<mass value="0.2"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+		
+		
+		<!-- temporary visual indicator -->
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.01 0.01 0.01"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.01 0.01 0.01"/>
+			</geometry>
+		</collision>
+
+		
+	
+	</link>
+	
+	<link name="laser_link">
+	
+		<!-- inertia element is required on each link for gazebo to accept it -->
+		<inertial>
+			<mass value="0.2"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+		
+		<!-- temporary visual indicator -->
+		<visual>
+			<origin xyz="0 0 0.28" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.03" length="0.025"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+
+		<collision>
+			<origin xyz="0 0 0.28" rpy="0 0 0"/>
+			<geometry>
+				<cylinder radius="0.03" length="0.025"/>
+			</geometry>
+		</collision>
+	
+		
+
+
+	</link>
+	
+
+	<joint name="camera_joint" type="revolute">
+		<origin xyz="0.14 0 0.055" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="camera_link"/>
+		<axis xyz="0 1 0"/>
+		<dynamics damping="0.0" friction="0.0"/>
+		<limit effort="2" velocity="1.0" lower="-1.0" upper="0.7" />
+	</joint>
+
+	<transmission name="camera_tran">
+    	<type>transmission_interface/SimpleTransmission</type>
+    	<joint name="camera_joint">
+        	<hardwareInterface>PositionJointInterface</hardwareInterface>
+    	</joint>
+		<actuator name="camera_motor">
+			<hardwareInterface>PositionJointInterface</hardwareInterface>
+			<mechanicalReduction>1</mechanicalReduction>
+		</actuator>
+	</transmission>
+
+	<joint name="laser_joint" type="fixed">
+		<origin xyz="0 0 0" rpy="0 0 0"/>
+		<parent link="base_link"/>
+		<child link="laser_link"/>
+	</joint>
+	
+	
+	
+	
+	<!-- temporary markers to make wheel rotation visible -->
+	
+	<link name="marker_1">
+		<inertial>
+			<mass value="0.2"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.01 0.01 0.01"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.01 0.01 0.01"/>
+			</geometry>
+		</collision>
+		
+	
+	</link>
+	
+	<joint name="wheel1_marker1" type="fixed">
+		<origin xyz="0 0.03 -0.01" rpy="0 0 0"/>
+		<parent link="wheel_1"/>
+		<child link="marker_1"/>
+	</joint>
+	
+	<link name="marker_2">
+		<inertial>
+			<mass value="0.2"/>
+			<inertia ixx="0.0003" ixy="0.0" ixz="0.0" iyy="0.0003" iyz="0.0" izz="0.0003"/>
+		</inertial>
+		
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.01 0.01 0.01"/>
+			</geometry>
+			<material name="red"/>
+		</visual>
+		
+		<collision>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.01 0.01 0.01"/>
+			</geometry>
+		</collision>
+		
+	
+	</link>
+	
+	<joint name="wheel2_marker2" type="fixed">
+		<origin xyz="0 0.03 0.01" rpy="0 0 0"/>
+		<parent link="wheel_2"/>
+		<child link="marker_2"/>
+	</joint>
+	
+
+</robot>
